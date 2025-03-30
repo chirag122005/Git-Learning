@@ -17,5 +17,25 @@ const account = {
             this.balance -= amount;
             console.log(`Withdrew ${amount}. New balance is ${this.balance}`);
         }
+    },
+    checkBalance() {
+        console.log(`The current balance is ${this.balance}`);
     }
 };
+
+
+function addNumbers(a, b) {
+    return a + b;
+}
+function addNumbers(a, b) {
+    return a + b;
+}
+function addNumbers(a, b) {
+    return a + b;
+}
+function addNumbers(a, b) {
+    return a + b;
+}
+function addNumbers(a, b) {
+    return a + b;
+}
