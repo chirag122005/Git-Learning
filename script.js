@@ -22,6 +22,17 @@ percentageCalc.innerHTML = `
 `;
 document.body.appendChild(percentageCalc);
 
+// Add tax calculator
+const taxCalc = document.createElement('div');
+taxCalc.innerHTML = `
+    <h3>Tax Calculator</h3>
+    <input type="number" id="income" placeholder="Enter income">
+    <input type="number" id="taxRate" placeholder="Enter tax rate (%)">
+    <button id="calculateTax">Calculate Tax</button>
+    <div id="taxResult"></div>
+`;
+document.body.appendChild(taxCalc);
+
 // Add event listeners
 document.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
@@ -31,6 +42,7 @@ document.addEventListener('keypress', (event) => {
 
 document.getElementById('calculateBtn').addEventListener('click', calculate);
 document.getElementById('calculatePercentage').addEventListener('click', calculatePercentage);
+document.getElementById('calculateTax').addEventListener('click', calculateTax);
 
 function calculate() {
     const num1 = parseFloat(document.getElementById('num1').value);
@@ -59,5 +71,17 @@ function calculatePercentage() {
     } else {
         document.getElementById('percentageResult').textContent = 
             'Please enter valid numbers';
+    }
+}
+
+function calculateTax() {
+    const income = parseFloat(document.getElementById('income').value);
+    const taxRate = parseFloat(document.getElementById('taxRate').value);
+    
+    if (!isNaN(income) && !isNaN(taxRate)) {
+        const tax = (income * taxRate) / 100;
+        const afterTax = income - tax;
+        document.getElementById('taxResult').textContent = 
+            `Tax amount: ${tax.toFixed(2)}, After tax: ${afterTax.toFixed(2)}`;
     }
 }
